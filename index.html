@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lidé za naší prací — tým</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HLAVIČKA -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#o-tymu">
+        <img src="nova-brand/assets/nova-logo-navy-transparent.png" alt="Nova" />
+      </a>
+      <nav class="nav">
+        <a href="#o-tymu">O týmu</a>
+        <a href="#lide">Lidé</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="o-tymu">
+    <!-- jemná brandová textura: pravý Nova loop prvek -->
+    <img class="hero__texture" src="nova-brand/assets/nova-loop-blue.svg" alt="" aria-hidden="true" />
+
+    <div class="hero__inner">
+      <span class="eyebrow">O týmu</span>
+      <h1 class="hero__title">Lidé za naší prací</h1>
+      <p class="hero__subtitle">
+        Jsme parta, která propojuje data, kreativitu a technologie.
+        Poznejte tváře, které za tím stojí.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#lide">Seznamte se s týmem</a>
+        <a class="btn btn--ghost" href="#kontakt">Ozvěte se nám</a>
+      </div>
+    </div>
+
+    <!-- náznak fotek týmu (vykukuje zespodu) — PLACEHOLDER, nahraď reálnými fotkami -->
+    <div class="team-hint">
+      <figure class="thumb">
+        <img src="nova-brand/assets/team/member-1.jpg" alt="" />
+        <figcaption><strong>Jana Nováková</strong><span>Head of Team</span></figcaption>
+      </figure>
+      <figure class="thumb">
+        <img src="nova-brand/assets/team/member-2.jpg" alt="" />
+        <figcaption><strong>Petr Svoboda</strong><span>Engineer</span></figcaption>
+      </figure>
+      <figure class="thumb">
+        <img src="nova-brand/assets/team/member-3.jpg" alt="" />
+        <figcaption><strong>Tomáš Král</strong><span>Product Owner</span></figcaption>
+      </figure>
+      <figure class="thumb">
+        <img src="nova-brand/assets/team/member-4.jpg" alt="" />
+        <figcaption><strong>Martin Horák</strong><span>Designer</span></figcaption>
+      </figure>
+      <figure class="thumb">
+        <img src="nova-brand/assets/team/member-5.jpg" alt="" />
+        <figcaption><strong>Ondřej Fiala</strong><span>Data</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- SEKCE LIDÉ -->
+  <section class="people" id="lide">
+    <div class="section-head">
+      <span class="eyebrow">Náš tým</span>
+      <h2>Seznamte se s týmem</h2>
+      <p>Listujte týmem nebo si vyfiltrujte konkrétní oddělení.</p>
+    </div>
+
+    <div class="people-search">
+      <input type="search" id="people-search" class="people-search__input"
+             placeholder="Hledat v týmu" aria-label="Hledat v týmu" autocomplete="off" />
+    </div>
+
+    <div class="filters" role="tablist">
+      <span class="filter is-active" data-filter="all" role="button" tabindex="0">Vše</span>
+      <span class="filter" data-filter="ml" role="button" tabindex="0">ML Tým</span>
+      <span class="filter" data-filter="ai" role="button" tabindex="0">AI</span>
+      <span class="filter" data-filter="produkt" role="button" tabindex="0">Produkt</span>
+      <span class="filter" data-filter="data" role="button" tabindex="0">Data</span>
+    </div>
+
+    <div class="grid">
+      <article class="card" data-dept="ml">
+        <div class="card__photo"><img src="nova-brand/assets/team/member-1.jpg" alt="Jana Nováková" /></div>
+        <div class="card__body">
+          <h3>Jana Nováková</h3>
+          <p class="card__role">Head of Team</p>
+          <span class="tag">ML Tým</span>
+          <p class="card__desc">Vede tým a propojuje strategii s každodenní praxí.</p>
+          <a class="card__mail" href="mailto:jana.novakova@firma.cz">jana.novakova@firma.cz</a>
+        </div>
+      </article>
+
+      <article class="card" data-dept="ml">
+        <div class="card__photo"><img src="nova-brand/assets/team/member-2.jpg" alt="Petr Svoboda" /></div>
+        <div class="card__body">
+          <h3>Petr Svoboda</h3>
+          <p class="card__role">ML Engineer</p>
+          <span class="tag">ML Tým</span>
+          <p class="card__desc">Staví a ladí modely a datové pipeline.</p>
+          <a class="card__mail" href="mailto:petr.svoboda@firma.cz">petr.svoboda@firma.cz</a>
+        </div>
+      </article>
+
+      <article class="card" data-dept="ai">
+        <div class="card__photo"><img src="nova-brand/assets/team/member-3.jpg" alt="Tomáš Král" /></div>
+        <div class="card__body">
+          <h3>Tomáš Král</h3>
+          <p class="card__role">AI Product Owner</p>
+          <span class="tag">AI</span>
+          <p class="card__desc">Spojuje byznys a vývoj, vlastní produktovou vizi.</p>
+          <a class="card__mail" href="mailto:tomas.kral@firma.cz">tomas.kral@firma.cz</a>
+        </div>
+      </article>
+
+      <article class="card" data-dept="produkt">
+        <div class="card__photo"><img src="nova-brand/assets/team/member-4.jpg" alt="Martin Horák" /></div>
+        <div class="card__body">
+          <h3>Martin Horák</h3>
+          <p class="card__role">Product Designer</p>
+          <span class="tag">Produkt</span>
+          <p class="card__desc">Navrhuje rozhraní a dbá na použitelnost.</p>
+          <a class="card__mail" href="mailto:martin.horak@firma.cz">martin.horak@firma.cz</a>
+        </div>
+      </article>
+
+      <article class="card" data-dept="data">
+        <div class="card__photo"><img src="nova-brand/assets/team/member-5.jpg" alt="Ondřej Fiala" /></div>
+        <div class="card__body">
+          <h3>Ondřej Fiala</h3>
+          <p class="card__role">Data Engineer</p>
+          <span class="tag">Data</span>
+          <p class="card__desc">Buduje datové toky a jejich kvalitu.</p>
+          <a class="card__mail" href="mailto:ondrej.fiala@firma.cz">ondrej.fiala@firma.cz</a>
+        </div>
+      </article>
+    </div>
+
+    <p class="no-results" id="no-results" hidden>Nikoho jsem nenašel. Zkus jiné jméno nebo oddělení.</p>
+  </section>
+
+  <!-- SEKCE GALERIE -->
+  <section class="gallery" id="galerie">
+    <div class="section-head">
+      <span class="eyebrow">Ze zákulisí</span>
+      <h2>Galerie</h2>
+      <p>Momenty z naší práce, akcí a zákulisí.</p>
+    </div>
+
+    <!-- PLACEHOLDER dlaždice — nahraď reálnými fotkami (stejný ořez) -->
+    <div class="gallery-grid">
+      <figure class="gtile"><img src="nova-brand/assets/gallery/gal1.jpg" alt="" /></figure>
+      <figure class="gtile"><img src="nova-brand/assets/gallery/gal2.jpg" alt="" /></figure>
+      <figure class="gtile"><img src="nova-brand/assets/gallery/gal3.jpg" alt="" /></figure>
+      <figure class="gtile"><img src="nova-brand/assets/gallery/gal4.jpg" alt="" /></figure>
+      <figure class="gtile"><img src="nova-brand/assets/gallery/gal5.jpg" alt="" /></figure>
+      <figure class="gtile"><img src="nova-brand/assets/gallery/gal6.jpg" alt="" /></figure>
+      <figure class="gtile"><img src="nova-brand/assets/gallery/gal7.jpg" alt="" /></figure>
+      <figure class="gtile"><img src="nova-brand/assets/gallery/gal8.jpg" alt="" /></figure>
+      <figure class="gtile"><img src="nova-brand/assets/gallery/gal9.jpg" alt="" /></figure>
+    </div>
+  </section>
+
+  <!-- KONTAKT / PATIČKA -->
+  <footer class="footer" id="kontakt">
+    <img class="footer__loop" src="nova-brand/assets/nova-loop-red.svg" alt="" aria-hidden="true" />
+    <div class="footer__cta">
+      <span class="eyebrow">Kontakt</span>
+      <h2>Pojďme se potkat</h2>
+      <p>Máte dotaz, nápad na spolupráci nebo se k nám chcete přidat? Ozvěte se.</p>
+      <a class="btn btn--primary" href="mailto:tym@firma.cz">tym@firma.cz</a>
+    </div>
+    <div class="footer__bottom">
+      <img class="footer__logo" src="nova-brand/assets/nova-logo-white-transparent.png" alt="Nova" />
+      <nav class="footer__nav">
+        <a href="#o-tymu">O týmu</a>
+        <a href="#lide">Lidé</a>
+        <a href="#galerie">Galerie</a>
+      </nav>
+      <p class="footer__copy">© 2026 Nova — AI tým</p>
+    </div>
+  </footer>
+
+  <!-- TLAČÍTKO NAHORU -->
+  <button class="to-top" id="to-top" type="button" aria-label="Zpět na začátek stránky">
+    <span aria-hidden="true">&uarr;</span>
+  </button>
+
+  <script>
+    // Filtr oddělení
+    const filters = document.querySelectorAll('.filter');
+    const cards = document.querySelectorAll('.card');
+    filters.forEach(btn => btn.addEventListener('click', () => {
+      filters.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      activeDept = btn.dataset.filter;
+      applyPeopleFilter();
+    }));
+
+    // Hledání v týmu (funguje společně s filtrem oddělení)
+    const searchInput = document.getElementById('people-search');
+    const noResults = document.getElementById('no-results');
+    let activeDept = 'all';
+
+    // odstraní diakritiku, aby "kral" našel "Král"
+    const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+
+    function applyPeopleFilter() {
+      const q = norm(searchInput.value);
+      let visible = 0;
+      cards.forEach(c => {
+        const matchDept = (activeDept === 'all' || c.dataset.dept === activeDept);
+        const matchText = q === '' || norm(c.textContent).includes(q);
+        const show = matchDept && matchText;
+        c.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      noResults.hidden = visible > 0;
+    }
+
+    searchInput.addEventListener('input', applyPeopleFilter);
+
+    // Zúžení hlavičky při scrollu
+    const header = document.getElementById('site-header');
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 24);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Scroll spy — zvýraznění aktivní položky menu
+    const navLinks = document.querySelectorAll('.nav a');
+    const linkFor = {};
+    navLinks.forEach(a => { linkFor[a.getAttribute('href').slice(1)] = a; });
+    const sections = ['o-tymu', 'lide', 'galerie', 'kontakt']
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          const link = linkFor[e.target.id];
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+
+    // Tlačítko nahoru
+    const toTop = document.getElementById('to-top');
+    const toggleToTop = () => {
+      toTop.classList.toggle('is-visible', window.scrollY >= window.innerHeight);
+    };
+    window.addEventListener('scroll', toggleToTop, { passive: true });
+    toggleToTop();
+    toTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    sections.forEach(s => spy.observe(s));
+  </script>
+
+</body>
+</html>

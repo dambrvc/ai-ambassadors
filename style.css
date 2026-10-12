@@ -1,0 +1,464 @@
+/* ===== Font Organica ===== */
+@font-face {
+  font-family: "Organica";
+  src: url("nova-brand/assets/Organica 2/Organica Regular.otf") format("opentype");
+  font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: "Organica";
+  src: url("nova-brand/assets/Organica 2/Organica Medium.otf") format("opentype");
+  font-weight: 500; font-display: swap;
+}
+@font-face {
+  font-family: "Organica";
+  src: url("nova-brand/assets/Organica 2/Organica Semibold.otf") format("opentype");
+  font-weight: 600; font-display: swap;
+}
+@font-face {
+  font-family: "Organica";
+  src: url("nova-brand/assets/Organica 2/Organica Bold.otf") format("opentype");
+  font-weight: 700; font-display: swap;
+}
+
+/* ===== Brand proměnné ===== */
+:root {
+  --navy: #0D1767;
+  --navy-deep: #0A134D;
+  --blue: #143DD5;
+  --red: #F03B3B;
+  --red-deep: #CF121D;
+  --grey: #E3E3E3;
+  --grey-soft: #F4F5F9;
+  --white: #FFFFFF;
+
+  --radius: 16px;
+  --shadow: 0 8px 24px rgba(13, 23, 103, 0.10);
+  --shadow-lg: 0 16px 40px rgba(13, 23, 103, 0.16);
+
+  --font: "Organica", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ===== Základ ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  color: var(--navy);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* posun kotev pod přilepenou hlavičku */
+section, footer { scroll-margin-top: 90px; }
+
+/* ===== Hlavička (sticky + zúžení) ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: box-shadow 0.25s ease, background 0.25s ease;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 22px 48px;
+  transition: padding 0.25s ease;
+}
+.logo img { height: 44px; display: block; transition: height 0.25s ease; }
+
+/* stav po odscrollování */
+.site-header.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 18px rgba(13, 23, 103, 0.08);
+}
+.site-header.scrolled .header-inner { padding-top: 12px; padding-bottom: 12px; }
+.site-header.scrolled .logo img { height: 32px; }
+
+.nav { display: flex; gap: 36px; }
+.nav a {
+  position: relative;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--navy);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.nav a:hover { color: var(--red); }
+/* aktivní položka (scroll spy) */
+.nav a.active { color: var(--red); }
+.nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -8px;
+  height: 2px;
+  background: var(--red);
+  border-radius: 2px;
+}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 88px 24px 0;
+  /* jemná brandová textura: světlý modravý gradient shora */
+  background: radial-gradient(1200px 520px at 50% -8%, #EEF1FB 0%, #FFFFFF 62%);
+}
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Nova loop prvek jako decentní brandová dekorace */
+.hero__texture {
+  position: absolute;
+  z-index: 1;
+  width: 360px;
+  top: 40px;
+  right: 40px;
+  opacity: 0.16;
+  pointer-events: none;
+  transform-origin: center;
+  animation: loopFloat 14s ease-in-out infinite;
+}
+
+/* jemná animace loop prvku (dýchání + lehké natočení) */
+@keyframes loopFloat {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); }
+  50%  { transform: translateY(-18px) rotate(6deg) scale(1.04); }
+  100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+@keyframes loopFloatAlt {
+  0%   { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(14px) rotate(-5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__texture, .footer__loop { animation: none !important; }
+}
+
+/* náznak fotek týmu — řada karet vykukující zespodu */
+.team-hint {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  max-width: 1160px;
+  margin: 64px auto -1px;
+  padding: 0 24px;
+}
+.thumb {
+  position: relative;
+  flex: 1 1 0;
+  max-width: 210px;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  box-shadow: 0 -6px 28px rgba(13, 23, 103, 0.10);
+  transition: transform 0.2s ease;
+}
+.thumb:nth-child(even) { transform: translateY(18px); }
+.thumb img { width: 100%; display: block; aspect-ratio: 4 / 5; object-fit: cover; }
+.thumb figcaption {
+  position: absolute;
+  left: 12px; right: 12px; bottom: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 10px;
+  padding: 8px 12px;
+  text-align: left;
+}
+.thumb figcaption strong { display: block; font-weight: 600; font-size: 14px; color: var(--navy); }
+.thumb figcaption span { font-size: 12px; color: var(--red); }
+
+.eyebrow {
+  display: inline-block;
+  background: var(--red);
+  color: var(--white);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 999px;
+  margin-bottom: 24px;
+}
+
+.hero__title {
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  margin-bottom: 24px;
+}
+
+.hero__subtitle {
+  font-size: clamp(16px, 2vw, 19px);
+  color: #4a4f73;
+  max-width: 560px;
+  margin: 0 auto 40px;
+}
+
+/* CTA */
+.hero__cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.btn--primary { background: var(--red); color: var(--white); }
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(240,59,59,0.35); }
+.btn--ghost { background: var(--grey-soft); color: var(--navy); }
+.btn--ghost:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+
+/* ===== Sekce Lidé ===== */
+.people {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 96px 24px 112px;
+}
+.section-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+.section-head h2 {
+  font-weight: 700;
+  font-size: clamp(30px, 4vw, 40px);
+  color: var(--navy);
+  margin: 16px 0 12px;
+}
+.section-head p { color: #4a4f73; font-size: 17px; }
+
+/* Filtr */
+.filters {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.filter {
+  display: inline-block;
+  width: auto;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 22px;
+  margin: 6px;
+  border-radius: 999px;
+  background: var(--grey-soft);
+  color: var(--navy);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.filter:hover { transform: translateY(-2px); }
+.filter.is-active { background: var(--red); color: #fff; }
+
+/* Mřížka (vycentrovaná — poslední řádek na střed) */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+/* Karta */
+.card {
+  width: 300px;
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.card__photo { aspect-ratio: 4 / 5; overflow: hidden; }
+.card__photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+.card:hover .card__photo img { transform: scale(1.04); }
+.card__body { padding: 20px; }
+.card__body h3 { font-weight: 600; font-size: 19px; color: var(--navy); }
+.card__role { color: var(--red); font-weight: 500; font-size: 14px; margin: 2px 0 12px; }
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--navy);
+  background: var(--grey-soft);
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+.card__desc { font-size: 14px; color: #4a4f73; margin: 14px 0 12px; line-height: 1.5; }
+.card__mail { font-size: 13px; font-weight: 600; color: var(--red); word-break: break-all; }
+.card__mail:hover { text-decoration: underline; }
+
+/* ===== Sekce Galerie ===== */
+.gallery {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 112px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  grid-auto-rows: 240px;
+  grid-auto-flow: dense;
+}
+.gtile {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.gtile--wide { grid-column: span 2; }
+.gtile img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.35s ease;
+}
+.gtile:hover img { transform: scale(1.05); }
+
+/* ===== Kontakt / patička ===== */
+.footer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0A134D, #0D1767 55%, #143DD5);
+  color: #fff;
+  padding: 96px 24px 40px;
+}
+.footer__loop {
+  position: absolute;
+  width: 420px;
+  right: -80px; top: -60px;
+  opacity: 0.18;
+  pointer-events: none;
+  transform-origin: center;
+  animation: loopFloatAlt 16s ease-in-out infinite;
+}
+.footer__cta {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 72px;
+}
+.footer__cta h2 { font-weight: 700; font-size: clamp(30px, 4vw, 44px); margin: 16px 0 14px; }
+.footer__cta p { color: rgba(255,255,255,0.8); font-size: 17px; margin-bottom: 28px; }
+
+.footer__bottom {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer__logo { height: 30px; }
+.footer__nav { display: flex; gap: 28px; }
+.footer__nav a { font-size: 15px; color: rgba(255,255,255,0.85); white-space: nowrap; transition: color 0.2s ease; }
+.footer__nav a:hover { color: #fff; }
+.footer__copy { font-size: 13px; color: rgba(255,255,255,0.6); }
+
+/* ===== Responzivita ===== */
+@media (max-width: 1000px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gtile--wide { grid-column: span 2; }
+}
+@media (max-width: 640px) {
+  .site-header { padding: 20px 24px; }
+  .nav { display: none; }
+  .hero { padding: 56px 20px 72px; }
+  .card { width: 100%; }
+  .people { padding: 64px 20px 80px; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gtile--wide { grid-column: span 1; }
+}
+
+
+/* ===== Tlačítko nahoru ===== */
+.to-top {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 90;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font);
+  font-size: 22px;
+  line-height: 1;
+  color: var(--white);
+  background: var(--red);
+  border: 0;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease, box-shadow .2s ease;
+}
+.to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(240, 59, 59, 0.35);
+}
+.to-top:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 3px;
+}
+@media (max-width: 640px) {
+  .to-top { right: 16px; bottom: 16px; width: 46px; height: 46px; font-size: 20px; }
+}
+
+
+/* ===== Hledání v týmu ===== */
+.people-search { display: flex; justify-content: center; margin: 0 auto 18px; }
+.people-search__input {
+  font-family: var(--font);
+  font-size: 15px;
+  width: 100%;
+  max-width: 320px;
+  padding: 12px 18px;
+  color: var(--navy);
+  background: var(--white);
+  border: 1px solid rgba(13, 23, 103, 0.18);
+  border-radius: 999px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.people-search__input::placeholder { color: rgba(13, 23, 103, 0.45); }
+.people-search__input:hover { border-color: rgba(13, 23, 103, 0.4); }
+.people-search__input:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+  border-color: var(--navy);
+}
+.no-results {
+  text-align: center;
+  color: rgba(13, 23, 103, 0.6);
+  font-size: 15px;
+  margin: 8px 0 0;
+}
